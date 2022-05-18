@@ -1,11 +1,28 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Show</title>
+    <link rel="stylesheet" href="{% static '/css/bootstrap.css/' %}">
+
 </head>
 <body>
-<img src="{{ show.image.url }}" alt="">
+<style>
+    .shows__button {
+        margin-top: 40px;
+    }
+    .detail__image {
+        margin-top: 20px;
+        margin-left: 250px;
+
+    }
+</style>
+<div class="container">
+    <a href="/shows/" class="btn btn-secondary shows__button">Back</a>
+    <a href="/add-shows/" class="btn btn-secondary shows__button">Create New</a>
+</div>
+<img src="{{ show.image.url }}" class="detail__image" alt="">
 <h2>{{ show.title }}</h2>
 <p>{{ show.description }}</p>
 <p>{{ show.genre }}</p>
@@ -13,7 +30,5 @@
 <p>{{ show.created_date }}</p>
 <p>{{ show.updated_date }}</p>
 <p>{{ show.age_control }}</p>
-
-<a href="/shows/">Back</a>
 </body>
 </html>
