@@ -11,24 +11,44 @@
 <style>
     .shows__button {
         margin-top: 40px;
+        margin-bottom: 40px;
     }
-    .detail__image {
-        margin-top: 20px;
-        margin-left: 250px;
 
+    .detail__image {
+        height: 400px;
+        object-fit: fill;
+
+    }
+
+    .show__card__body {
+        background-color: #FFE53B;
+        background-image: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
+    }
+
+    body {
+        background-color: #FFE53B;
+        background-image: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
     }
 </style>
 <div class="container">
     <a href="/shows/" class="btn btn-secondary shows__button">Back</a>
     <a href="/add-shows/" class="btn btn-secondary shows__button">Create New</a>
+    <a href="/shows/{{ show.id }}/update/" class="btn btn-secondary shows__button">Change</a>
+    <a href="/shows/{{ show.id }}/delete/" class="btn btn-secondary shows__button">Delete</a>
 </div>
-<img src="{{ show.image.url }}" class="detail__image" alt="">
-<h2>{{ show.title }}</h2>
-<p>{{ show.description }}</p>
-<p>{{ show.genre }}</p>
-<p>{{ show.quantity }}</p>
-<p>{{ show.created_date }}</p>
-<p>{{ show.updated_date }}</p>
-<p>{{ show.age_control }}</p>
+<div class="container">
+    <div class="card">
+        <img src="{{ show.image.url }}" class="card-img-top detail__image" alt="...">
+        <div class="card-body show__card__body">
+            <h5 class="card-title">{{ show.title }}</h5>
+            <p class="card-text">{{ show.description }}</p>
+            <p class="card-text">{{ show.genre }}</p>
+            <p class="card-text">{{ show.quantity }}</p>
+            <p class="card-text">{{ show.created_date }}</p>
+            <p class="card-text">{{ show.updated_date }}</p>
+            <p class="card-text">{{ show.age_control }}</p>
+        </div>
+    </div>
+</div>
 </body>
 </html>
