@@ -33,21 +33,33 @@
 <div class="container">
     <a href="/shows/" class="btn btn-secondary shows__button">Back</a>
     <a href="/add-shows/" class="btn btn-secondary shows__button">Create New</a>
-    <a href="/shows/{{ show.id }}/update/" class="btn btn-secondary shows__button">Change</a>
-    <a href="/shows/{{ show.id }}/delete/" class="btn btn-secondary shows__button">Delete</a>
+    <a href="/shows/{{ object.id }}/update/" class="btn btn-secondary shows__button">Change</a>
+    <a href="/shows/{{ object.id }}/delete/" class="btn btn-secondary shows__button">Delete</a>
 </div>
 <div class="container">
     <div class="card">
-        <img src="{{ show.image.url }}" class="card-img-top detail__image" alt="...">
+        <img src="{{ object.image.url }}" class="card-img-top detail__image" alt="...">
         <div class="card-body show__card__body">
-            <h5 class="card-title">{{ show.title }}</h5>
-            <p class="card-text">{{ show.description }}</p>
-            <p class="card-text">{{ show.genre }}</p>
-            <p class="card-text">{{ show.quantity }}</p>
-            <p class="card-text">{{ show.created_date }}</p>
-            <p class="card-text">{{ show.updated_date }}</p>
-            <p class="card-text">{{ show.age_control }}</p>
+            <h5 class="card-title">{{ object.title }}</h5>
+            <p class="card-text">{{ object.description }}</p>
+            <p class="card-text">{{ object.genre }}</p>
+            <p class="card-text">{{ object.quantity }}</p>
+            <p class="card-text">{{ object.created_date }}</p>
+            <p class="card-text">{{ object.updated_date }}</p>
+            <p class="card-text">{{ object.age_control }}</p>
+            <div class="card-body">
+                <h2>Comments: </h2>
+                <ul>
+                    {% for comment in object.shows_comment.all %}
+                    <li>
+                        <p>Username: {{ comment.user.username }}</p>
+                        <p>Text: {{ comment.text }}</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
+
     </div>
 </div>
 </body>

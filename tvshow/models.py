@@ -23,3 +23,26 @@ class Shows(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class ShowsUser(models.Model):
+    username = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.username
+
+
+class ShowComment(models.Model):
+    shows = models.ForeignKey(Shows,
+                              on_delete=models.CASCADE,
+                              related_name="shows_comment")
+    user = models.ForeignKey(ShowsUser,
+                             on_delete=models.CASCADE,
+                             related_name="shows_user",
+                             null=True)
+    text = models.TextField()
+    created_date = models.DateField(auto_now_add=True)
+    updated_date = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.shows.title
