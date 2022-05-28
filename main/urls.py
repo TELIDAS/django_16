@@ -8,7 +8,8 @@ urlpatterns = (
         [
             path('admin/', admin.site.urls),
             path('', include('tvshow.urls')),
-            path('', include('blog.urls'))
+            path('', include('blog.urls')),
+            path('', include('scrapy.urls')),
         ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
         + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 )
