@@ -16,16 +16,3 @@ class ParserFormView(generic.FormView):
             return HttpResponse("Parsed data successfully")
         else:
             return super(ParserFormView, self).post(request, *args, **kwargs)
-
-
-# class ParserDoramaFormView(ParserFormView, generic.FormView):
-#     template_name = "plants_parser.html"
-#     form_class = forms.ParserForm
-#
-#     def post(self, request, *args, **kwargs):
-#         form = self.form_class(request.POST)
-#         if form.is_valid():
-#             form.parse_data()
-#             return HttpResponse("Parsed dorama data successfully")
-#         else:
-#             return super(ParserDoramaFormView, self).post(request, *args, **kwargs)
