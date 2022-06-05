@@ -27,7 +27,9 @@ def get_data(html):
         plants.append(
             {
                 "link": item.find("a").get("href"),
-                "title": item.find("h2", class_="woocommerce-loop-category__title").get_text(strip=True),
+                "title": item.find(
+                    "h2", class_="woocommerce-loop-category__title"
+                ).get_text(strip=True),
                 "image": item.find("a").find("img").get("src"),
             }
         )
@@ -60,6 +62,7 @@ def get_data_dorama(html):
             }
         )
     return dorama
+
 
 @csrf_exempt
 def parser_func_dorama():

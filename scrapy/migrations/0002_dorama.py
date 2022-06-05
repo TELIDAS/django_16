@@ -6,17 +6,25 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('scrapy', '0001_initial'),
+        ("scrapy", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Dorama',
+            name="Dorama",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('link', models.CharField(max_length=255)),
-                ('title', models.CharField(max_length=255)),
-                ('image', models.ImageField(upload_to='')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("link", models.CharField(max_length=255)),
+                ("title", models.CharField(max_length=255)),
+                ("image", models.ImageField(upload_to="")),
             ],
         ),
     ]

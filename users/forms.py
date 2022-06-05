@@ -1,19 +1,19 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField
+from django.contrib.auth.forms import (
+    UserCreationForm,
+    AuthenticationForm,
+    UsernameField,
+)
 from .models import CustomUser
 
 
 class RegistrationForm(UserCreationForm):
-    GENDER_TYPE = (
-        ("Male", "Male"),
-        ("Female", "Female"),
-        ("Other", "Other")
-    )
+    GENDER_TYPE = (("Male", "Male"), ("Female", "Female"), ("Other", "Other"))
     OCCUPATION_CHOICE = (
         ("Student", "Student"),
         ("Worker", "Worker"),
         ("Jobless", "Jobless"),
-        ("Retired", "Retired")
+        ("Retired", "Retired"),
     )
     gender = forms.ChoiceField(choices=GENDER_TYPE, required=True)
     occupation = forms.ChoiceField(choices=OCCUPATION_CHOICE, required=True)
@@ -21,7 +21,6 @@ class RegistrationForm(UserCreationForm):
     age = forms.DateField(required=True)
     phone_number = forms.CharField(required=True)
     code_word = forms.CharField(required=True)
-
 
     class Meta:
         model = CustomUser
@@ -36,15 +35,16 @@ class RegistrationForm(UserCreationForm):
             "occupation",
             "age",
             "phone_number",
-            "code_word"
+            "code_word",
         ]
 
     def save(self, commit=True):
         user = super(RegistrationForm, self).save(commit=False)
-        user.email = self.cleaned_data['email']
+        user.email = self.cleaned_data["email"]
         if commit:
             user.save()
         return user
+
 
 class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
@@ -55,7 +55,7 @@ class LoginForm(AuthenticationForm):
             attrs={
                 "class": "form-control",
                 "placeholder": "please type username",
-                "id": "username"
+                "id": "username",
             }
         )
     )
@@ -64,7 +64,7 @@ class LoginForm(AuthenticationForm):
             attrs={
                 "class": "form-control",
                 "placeholder": "please type password",
-                "id": "password"
+                "id": "password",
             }
         )
     )

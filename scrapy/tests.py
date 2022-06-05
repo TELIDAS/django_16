@@ -1,3 +1,6 @@
 from django.test import TestCase
 
-# Create your tests here.
+
+class TestParser(TestCase):
+    def test_parser_function(self):
+        pass
